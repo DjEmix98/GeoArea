@@ -20,7 +20,7 @@ public class CittaServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//commento citta
+// commento di ivan per testare commit
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CittaDao referenceZone = new CittaDaoImp();
 		String code = request.getParameter("codice");
