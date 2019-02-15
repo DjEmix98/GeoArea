@@ -8,8 +8,8 @@
 <title>GeoArea</title>
 </head>
 <body>
-	<c:forEach items="${list}" var="zona">
-		<a href="citta?codice=${zona.code}">${zona.nazione}</a>
+	<c:forEach items="${list}" var="nazioni">
+		<a href="citta?codice=${nazioni.code}">${nazioni.nome}</a>
 	</c:forEach>
 </body>
 </html>
