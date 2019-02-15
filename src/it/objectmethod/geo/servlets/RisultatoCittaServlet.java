@@ -20,11 +20,33 @@ public class RisultatoCittaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String codice = request.getParameter("codice");
+		String codice = request.getParameter("nazione");
 		String nome = request.getParameter("nomeCitta");
+		String regione = request.getParameter("regione");
+		String popolazioneStringa = request.getParameter("popolazione");
+		String id = request.getParameter("id");
+		long popolazioneLong = 0;
+		String risultato = "Inserimento riuscito!";
+		String forward = null;
 		CittaDaoImp referenceCitta = new CittaDaoImp();
-		referenceCitta.inserisciCitta(nome, codice);
-		request.setAttribute("code", codice);
-		request.getRequestDispatcher("risultato.jsp").forward(request, response);
+		if(id.isEmpty())
+		{
+			forward = "ModificaCittaServlet";
+		if(codice.isEmpty() || nome.isEmpty() || regione.isEmpty() || popolazioneStringa.isEmpty())
+		{
+			risultato = "Errore";
+		}
+		else
+		{
+			popolazioneLong = Long.parseLong(popolazioneStringa);
+			referenceCitta.inserisciCitta(nome,codice,regione,popolazioneLong);
+		}
+		}
+		else
+		{
+			forward = "risultato.jsp";
+		}
+		request.setAttribute("risultato", risultato);
+		request.getRequestDispatcher(forward).forward(request, response);
 	}
 }

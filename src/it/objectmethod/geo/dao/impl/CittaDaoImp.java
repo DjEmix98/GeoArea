@@ -135,14 +135,16 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void inserisciCitta(String nome, String code) {
+	public void inserisciCitta(String nome, String code, String regione, long popolazione) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
-		String sql = "INSERT INTO city (Name,CountryCode) values(?,?)";
+		String sql = "INSERT INTO city (Name,CountryCode,District,Population) values(?,?,?,?)";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1,nome);
-			stmt.setString(2, code);
+			stmt.setString(2,code);
+			stmt.setString(3,regione);
+			stmt.setLong(4,popolazione);
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {

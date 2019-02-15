@@ -9,9 +9,15 @@
 </head>
 <body>
 <form>
-<p>Inserisci nome città:</p>
-<input type="text" name = "nomeCitta">
-<button type="submit" name = "codice" value="${code}" formaction = "risultato">Inserisci</button>
+<select name="nazione">
+	<c:forEach items="${lista}" var="nazioni">
+  <option value="${nazioni.code}">${nazioni.nome}</option>
+</c:forEach>
+</select>
+<p>Inserisci nome regione: <input type="text" name = "regione"></p>
+<p>Inserisci nome città:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name = "nomeCitta"></p>
+<p>Inserisci popolazione:&nbsp;&nbsp; <input type="text" name = "popolazione"></p>
+<button type="submit"  formaction = "risultato" name = "id" value = "${id}">Inserisci</button>
 </form>
 </body>
 </html>

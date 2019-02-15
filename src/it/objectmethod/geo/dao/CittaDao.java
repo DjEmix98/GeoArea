@@ -9,5 +9,5 @@ public interface CittaDao {
 	public List<Citta> findCittaForCode (String code);
 	public List<Citta> findCittaForFilter(String filterTextCity, String filterCode,int filterPopolazione, boolean flagOperatore);
 	public void eliminaCitta(String id);
-	public void inserisciCitta(String nome, String code);
+	public void inserisciCitta(String nome, String code, String regione, long popolazione);
 }

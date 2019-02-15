@@ -70,7 +70,7 @@ public class NazioneDaoImp implements NazioneDao {
 				Nazione nazioni = new Nazione();
 				nazioni.setPopulation(rs.getString("Population"));
 				nazioni.setContinente(rs.getString("Continent"));
-				nazioni.setNazione(rs.getString("Name"));
+				nazioni.setNome(rs.getString("Name"));
 				nazioni.setCode(rs.getString("Code"));
 				listaNazioni.add(nazioni);
 			}
@@ -113,7 +113,7 @@ public class NazioneDaoImp implements NazioneDao {
 				Nazione nazioni = new Nazione();
 				nazioni.setPopulation(rs.getString("Population"));
 				nazioni.setContinente(rs.getString("Continent"));
-				nazioni.setNazione(rs.getString("Name"));
+				nazioni.setNome(rs.getString("Name"));
 				nazioni.setCode(rs.getString("Code"));
 				listaNazioni.add(nazioni);
 			}

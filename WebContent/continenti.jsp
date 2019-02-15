@@ -13,8 +13,8 @@
 	</c:forEach>
 	<form>
 	<select name="nazione">
-	<c:forEach items="${lista}" var="zona">
-  <option value="${zona.code}">${zona.nazione}</option>
+	<c:forEach items="${lista}" var="continenti">
+  <option value="${continenti.code}">${continenti.nome}</option>
 </c:forEach>
 </select>
 	<p> Da qui avvia una ricerca specifica! </p>
