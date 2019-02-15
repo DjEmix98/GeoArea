@@ -22,7 +22,7 @@ public class RicercaCittaServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ALtro commento
+
 		CittaDao referenceCitta = new CittaDaoImp();
 		List<Citta> listaCitta = new ArrayList<Citta>();
 		String textCity ="%"+ request.getParameter("ricercaCity")+"%";
