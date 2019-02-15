@@ -13,7 +13,7 @@
 	<button type="submit" value = "${codec}" name = "codice" formaction = "inserisci">Inserisci città</button> <br>
 	</form>
 	<c:forEach items="${list}" var="citta">
-		<a href="elimina?codice=${citta.countryCode}&id=${citta.id}" >${citta.nome}</a> 
+		<a>${citta.nome}&nbsp;</a><a href="elimina?codice=${citta.countryCode}&id=${citta.id}" style = "color:red;" >Elimina</a><br>
 	</c:forEach>
 </body>
 </html>
