@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.objectmethod.geo.dao.impl.CittaDaoImp;
 
 @WebServlet(value = "/risultato")
-public class RisultatoCittaServlet extends HttpServlet {
+public class RisultatoInserisciCittaServlet extends HttpServlet {
 
 	/**
 	 * 
