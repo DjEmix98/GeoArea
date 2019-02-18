@@ -135,7 +135,7 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void inserisciCitta(String nome, String code, String regione, long popolazione) {
+	public void inserisciCitta(String nome, String code, String regione, int popolazione) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
 		String sql = "INSERT INTO city (Name,CountryCode,District,Population) values(?,?,?,?)";
@@ -152,6 +152,53 @@ public class CittaDaoImp implements CittaDao {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public void modificaCitta(String id, String regione,String nome,String code,int popolazione ) {
+		Connection conn = ConnectionConfig.getConnection();
+		PreparedStatement stmt = null;
+		String sql = "update city set Name=?,District=?,Population=?, CountryCode=? where id=? ";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,nome);
+			stmt.setString(2,regione);
+			stmt.setInt(3, popolazione);
+			stmt.setString(4,code);
+			stmt.setString(5,id);
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	@Override
+	public Citta findCittaForId(String id) {
+		Connection conn = ConnectionConfig.getConnection();
+		Citta city = new Citta();
+		PreparedStatement stmt = null;
+		String sql = "SELECT* FROM city where ID = ?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,id);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next())
+			{
+				
+				city.setCountryCode(rs.getString("CountryCode"));
+				city.setDistrict(rs.getString("District"));
+				city.setId(rs.getString("ID"));
+				city.setNome(rs.getString("Name"));
+				city.setPopulation(rs.getString("Population"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return city;
 	}
 
 }

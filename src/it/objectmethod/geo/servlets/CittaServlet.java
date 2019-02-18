@@ -22,6 +22,7 @@ public class CittaServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 //commento citta
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Servlet citta");
 		CittaDao referenceZone = new CittaDaoImp();
 		String code = request.getParameter("codice");
 		System.out.println("codice: "+code);

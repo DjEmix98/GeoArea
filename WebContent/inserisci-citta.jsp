@@ -14,10 +14,10 @@
   <option value="${nazioni.code}">${nazioni.nome}</option>
 </c:forEach>
 </select>
-<p>Inserisci nome regione: <input type="text" name = "regione"></p>
-<p>Inserisci nome città:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name = "nomeCitta"></p>
-<p>Inserisci popolazione:&nbsp;&nbsp; <input type="text" name = "popolazione"></p>
-<button type="submit"  formaction = "risultato" name = "id" value = "${id}">Inserisci</button>
+<p>Inserisci nome regione: <input type="text" name = "regione" value = "${regione}"></p>
+<p>Inserisci nome città:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name = "nomeCitta" value ="${nomeCitta}"  ></p>
+<p>Inserisci popolazione:&nbsp;&nbsp; <input type="text" name = "popolazione" value = "${popolazione}"></p>
+<button type="submit"  formaction = "risultato" name = "id" value = "${id}">Esegui</button>
 </form>
 </body>
 </html>
