@@ -8,7 +8,7 @@
 <title>GeoArea</title>
 </head>
 <body>
-<a href="continenti">Torna alla home</a><br>
+<a href="continenti" style="color: black;">Torna alla home</a><br>
 	<c:forEach items="${list}" var="nazioni">
 		<a href="citta?codiceNazione=${nazioni.code}">${nazioni.nome}</a>
 	</c:forEach>

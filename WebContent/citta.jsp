@@ -11,7 +11,7 @@
 <body>
 	<p>${risultato}</p>
 	<a href="inserisci?id=0">Inserisci città</a>
-	<br><a href="continenti">Torna alla home</a>
+	<br><a href="continenti"style="color: black;">Torna alla home</a>
 	<br>
 	<c:forEach items="${list}" var="citta">
 		<a>${citta.nome}&nbsp;</a>

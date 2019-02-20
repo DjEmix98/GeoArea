@@ -17,6 +17,7 @@ public class ModificaInserisciCittaServlet extends HttpServlet {
 
 	private static final String ERRORE = "errore";
 	private static final String SUCCESS = "Operazione riuscita!";
+	private static final String sInserisci = "inserisci"; //Servlet inserisci
 	/**
 	 * 
 	 */
@@ -32,21 +33,24 @@ public class ModificaInserisciCittaServlet extends HttpServlet {
 		String popolazioneStringa = request.getParameter("popolazione");
 		String codiceNazione = request.getParameter("codiceNazione");
 		String risultato = SUCCESS;
+		String servlet = "citta";
 		int popolazioneInt = 0;
 		int id = Integer.parseInt(idStringa);
 		try {
 			popolazioneInt = Integer.parseInt(popolazioneStringa);
 		}catch(NumberFormatException e) {
 			risultato = ERRORE;
+			servlet = sInserisci;
 		}
 		citta.setCountryCode(codiceNazione);
 		citta.setDistrict(regione);
 		citta.setId(id);
 		citta.setNome(nome);
 		citta.setPopulation(popolazioneInt);
-		if(!controlloDati(citta))
+		if(!controlloDati(citta)|| risultato.compareTo(ERRORE)==0)
 		{
 			risultato = ERRORE;
+			servlet = sInserisci;
 		}
 		else { //Vedi note FormInserimento + rimuovere ripetizioni codice + programmare a oggetti e usare propriamente il bean citta
 			if(id==0) {
@@ -58,7 +62,7 @@ public class ModificaInserisciCittaServlet extends HttpServlet {
 		}
 
 		request.setAttribute("risultato", risultato);
-		request.getRequestDispatcher("citta").forward(request, response);
+		request.getRequestDispatcher(servlet).forward(request, response);
 
 	}
 

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="continenti">Torna alla home</a><br>
+<a href="continenti" style="color: black;">Torna alla home</a><p>${risultato}</p><br>
 	<form name="citta" action="inserimento">
 		<select name="codiceNazione">
 			<c:forEach items="${lista}" var="nazioni">
