@@ -21,10 +21,10 @@ public class ContinentiServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NazioneDao referenceZone = new NazioneDaoImp();
-		List<String> listaZone = referenceZone.findContinenti();
-		List<Nazione> listaNazioni = referenceZone.findAllNazioni();
-		request.setAttribute("list", listaZone);
+		NazioneDao nazioneDao = new NazioneDaoImp();
+		List<String> listaContinenti = nazioneDao.findContinenti();
+		List<Nazione> listaNazioni = nazioneDao.findAllNazioni();
+		request.setAttribute("list", listaContinenti);
 		request.setAttribute("lista", listaNazioni);
 		request.getRequestDispatcher("continenti.jsp").forward(request, response);
 	}

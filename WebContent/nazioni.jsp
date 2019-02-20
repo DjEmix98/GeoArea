@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:forEach items="${list}" var="nazioni">
-		<a href="citta?codice=${nazioni.code}">${nazioni.nome}</a>
+		<a href="citta?codiceNazione=${nazioni.code}">${nazioni.nome}</a>
 	</c:forEach>
 </body>
 </html>

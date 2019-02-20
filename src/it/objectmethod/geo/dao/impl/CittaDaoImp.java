@@ -126,12 +126,12 @@ public class CittaDaoImp implements CittaDao {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1,id);
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -146,12 +146,12 @@ public class CittaDaoImp implements CittaDao {
 			stmt.setString(3,regione);
 			stmt.setLong(4,popolazione);
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -167,13 +167,13 @@ public class CittaDaoImp implements CittaDao {
 			stmt.setString(4,code);
 			stmt.setString(5,id);
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -188,7 +188,7 @@ public class CittaDaoImp implements CittaDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next())
 			{
-				
+
 				city.setCountryCode(rs.getString("CountryCode"));
 				city.setDistrict(rs.getString("District"));
 				city.setId(rs.getString("ID"));

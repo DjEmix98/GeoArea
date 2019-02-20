@@ -28,7 +28,7 @@ public class RicercaCittaServlet extends HttpServlet{
 		String textCity ="%"+ request.getParameter("ricercaCity")+"%";
 		String popolazione = request.getParameter("nPopolazione");
 		String operatore = request.getParameter("operatore");
-		String codiceNazione = request.getParameter("nazione");
+		String codiceNazione = request.getParameter("codiceNazione");
 		String error = null;
 		int nPopolazione = convertiStringa(popolazione);
 		if(nPopolazione<0)
@@ -66,10 +66,10 @@ public class RicercaCittaServlet extends HttpServlet{
 	{
 		boolean bOperatore = true;
 		try {
-		if(operatore.compareToIgnoreCase("minore")==0)
-		{
-			return bOperatore = false;
-		}
+			if(operatore.compareToIgnoreCase("minore")==0)
+			{
+				return bOperatore = false;
+			}
 		}catch(java.lang.NullPointerException ex) {
 			return bOperatore;
 		}

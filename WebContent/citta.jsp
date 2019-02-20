@@ -9,11 +9,16 @@
 </head>
 
 <body>
-	<form>
-	<button type="submit" value = "${codec}" name = "codice" formaction = "inserisci">Inserisci città</button> <br>
-	</form>
+	<p>${risultato}</p>
+	<a href="inserisci?id=0">Inserisci città</a>
+	<br>
 	<c:forEach items="${list}" var="citta">
-		<a>${citta.nome}&nbsp;</a><a href="elimina?codice=${citta.countryCode}&id=${citta.id}" style = "color:red;" >Elimina</a><a href="inserisci?&id=${citta.id}" style = "color:green;" >&nbsp;Modifica</a><br>
+		<a>${citta.nome}&nbsp;</a>
+		<a href="elimina?codiceNazione=${citta.countryCode}&id=${citta.id}"
+			style="color: red;">Elimina</a>
+		<a href="inserisci?&id=${citta.id}&codiceNazione=${citta.countryCode}"
+			style="color: green;">&nbsp;Modifica</a>
+		<br>
 	</c:forEach>
 </body>
 </html>

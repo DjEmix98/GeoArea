@@ -20,16 +20,13 @@ public class CittaServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//commento citta
+	//commento citta
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Servlet citta");
-		CittaDao referenceZone = new CittaDaoImp();
-		String code = request.getParameter("codice");
-		System.out.println("codice: "+code);
-		List<Citta> listaZone = referenceZone.findCittaForCode(code);
-		request.setAttribute("code", code);
-		request.setAttribute("codec", code);
-		request.setAttribute("list", listaZone);
+		CittaDao cittaDao = new CittaDaoImp();
+		String code = request.getParameter("codiceNazione");
+		List<Citta> listaCitta = cittaDao.findCittaForCode(code);
+		request.setAttribute("list", listaCitta);
 		request.getRequestDispatcher("citta.jsp").forward(request, response);
 	}
 

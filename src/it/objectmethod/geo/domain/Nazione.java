@@ -6,7 +6,7 @@ public class Nazione {
 	private String nome;
 	private String code;
 	private String population;
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -31,5 +31,5 @@ public class Nazione {
 	public void setPopulation(String population) {
 		this.population = population;
 	}
-	
+
 }

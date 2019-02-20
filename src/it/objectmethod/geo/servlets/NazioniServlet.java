@@ -19,12 +19,12 @@ public class NazioniServlet  extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		NazioneDao referenceZone = new NazioneDaoImp();
-		
-		List<Nazione> listaZone = referenceZone.findNazioni(request.getParameter("zona"));
+
+		NazioneDao nazioneDao = new NazioneDaoImp();
+
+		List<Nazione> listaZone = nazioneDao.findNazioni(request.getParameter("nazioni"));
 		request.setAttribute("list", listaZone);
 		request.getRequestDispatcher("nazioni.jsp").forward(request, response);
 	}
