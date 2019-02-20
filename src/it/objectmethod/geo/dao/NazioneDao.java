@@ -9,6 +9,4 @@ public interface NazioneDao {
 	public List<String> findContinenti();
 	public List<Nazione> findNazioni(String continente);
 	public List<Nazione> findAllNazioni();
-	public List<Nazione> findNazionilessParameter(String codice);
-	public Nazione findSingleNation(String codice);
 }

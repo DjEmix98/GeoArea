@@ -11,9 +11,9 @@
 	<form name="citta" action="inserimento">
 		<select name="codiceNazione">
 			<c:forEach items="${lista}" var="nazioni">
-				<option value="${nazioni.code}">${nazioni.nome}</option>
+			  <c:if test = "${nazioni.code == codiceNazione}"><option value="${nazioni.code}"selected>${nazioni.nome}</option></c:if>
+			<c:if test="${nazioni.code != codiceNazione}"><option value="${nazioni.code}">${nazioni.nome}</option></c:if>
 			</c:forEach>
-			<option value="${codiceNazione.code}" selected>${codiceNazione.nome}</option>
 		</select>
 		<p>
 			Inserisci nome regione: <input type="text" name="regione"
@@ -23,10 +23,16 @@
 			Inserisci nome città:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 				type="text" name="cittaNome" value="${citta.nome}">
 		</p>
+		<c:if test="${citta.population ==0}"><p>
+			Inserisci popolazione:&nbsp;&nbsp; <input type="text"
+				name="popolazione" value="">
+		</p></c:if>
+		<c:if test="${citta.population !=0}">
 		<p>
 			Inserisci popolazione:&nbsp;&nbsp; <input type="text"
 				name="popolazione" value="${citta.population}">
 		</p>
+		</c:if>
 		<input type="hidden" value="${id}" name="id"> <input
 			type="submit" value="Esegui">
 	</form>

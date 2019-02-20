@@ -22,7 +22,8 @@ public class EliminaCittaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Servlet Elimina");
 		CittaDao city = new CittaDaoImp();
-		String id = request.getParameter("id");
+		String idString = request.getParameter("id");
+		int id = Integer.parseInt(idString);
 		System.out.println("Codice: "+id);
 		city.eliminaCitta(id);
 		request.getRequestDispatcher("citta").forward(request, response);

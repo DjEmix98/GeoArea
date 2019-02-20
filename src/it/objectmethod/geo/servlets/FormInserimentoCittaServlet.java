@@ -30,28 +30,24 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Servlet Inserisci");
 		List<Nazione> listaNazioni = new ArrayList<>();
-		Nazione nazioneSingola = new Nazione();
 		Citta city = new Citta();
 		NazioneDao nazioniDao = new NazioneDaoImp();
 		CittaDao cittaDao = new CittaDaoImp();
-		String id = request.getParameter("id");
-		if(id.compareToIgnoreCase("0")==0) //TODO correggere, fare parse e fare un confronto tra integer
+		String idStringa = request.getParameter("id");
+		String nazione = request.getParameter("codiceNazione");
+		Integer id = Integer.parseInt(idStringa); 
+		//TODO correggere, fare parse e fare un confronto tra integer
+
+		listaNazioni = nazioniDao.findAllNazioni();
+		System.out.println("nazione: "+nazione);
+		if(id!=0)
 		{
-			listaNazioni = nazioniDao.findAllNazioni();
-			nazioneSingola.setNome("Inserire nome nazione");
+		city = cittaDao.findCittaForId(id);
 		}
-		else
-		{
-			String nazione = request.getParameter("codiceNazione");
-			System.out.println("nazione: "+nazione);
-			city = cittaDao.findCittaForId(id);
-			listaNazioni = nazioniDao.findNazionilessParameter(nazione); //Eliminare nono
-			nazioneSingola = nazioniDao.findSingleNation(nazione); //TODO NONONONO eliminare
-		}
-		request.setAttribute("codiceNazione", nazioneSingola);
+		request.setAttribute("codiceNazione", nazione);
 		request.setAttribute("citta", city);
 		request.setAttribute("id", id);
-		request.setAttribute("lista", listaNazioni);
+		request.setAttribute("lista",listaNazioni);
 		request.getRequestDispatcher("inserisci-citta.jsp").forward(request, response);
 	}
 }

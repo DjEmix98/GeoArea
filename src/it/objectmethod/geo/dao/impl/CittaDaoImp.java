@@ -28,10 +28,10 @@ public class CittaDaoImp implements CittaDao {
 			while(rs.next()){
 				Citta citta = new Citta();
 				citta.setNome(rs.getString("Name"));
-				citta.setPopulation(rs.getString("Population"));
+				citta.setPopulation(rs.getInt("Population"));
 				citta.setCountryCode(rs.getString("countryCode"));
 				citta.setDistrict(rs.getString("District"));
-				citta.setId(rs.getString("ID"));
+				citta.setId(rs.getInt("ID"));
 				listaCitta.add(citta);
 			}
 
@@ -85,10 +85,10 @@ public class CittaDaoImp implements CittaDao {
 			while(rs.next()){
 				Citta citta = new Citta();
 				citta.setNome(rs.getString("Name"));
-				citta.setPopulation(rs.getString("Population"));
+				citta.setPopulation(rs.getInt("Population"));
 				citta.setCountryCode(rs.getString("CountryCode"));
 				citta.setDistrict(rs.getString("District"));
-				citta.setId(rs.getString("ID"));
+				citta.setId(rs.getInt("ID"));
 				listaCitta.add(citta);
 			}
 
@@ -118,13 +118,13 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void eliminaCitta(String id) {
+	public void eliminaCitta(int id) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
 		String sql = "DELETE FROM city where ID = ?";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1,id);
+			stmt.setInt(1,id);
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -155,7 +155,7 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void modificaCitta(String id, String regione,String nome,String code,int popolazione ) {
+	public void modificaCitta(int id, String regione,String nome,String code,int popolazione ) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
 		String sql = "update city set Name=?,District=?,Population=?, CountryCode=? where id=? ";
@@ -165,7 +165,7 @@ public class CittaDaoImp implements CittaDao {
 			stmt.setString(2,regione);
 			stmt.setInt(3, popolazione);
 			stmt.setString(4,code);
-			stmt.setString(5,id);
+			stmt.setInt(5,id);
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -177,23 +177,23 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public Citta findCittaForId(String id) {
+	public Citta findCittaForId(int id) {
 		Connection conn = ConnectionConfig.getConnection();
 		Citta city = new Citta();
 		PreparedStatement stmt = null;
 		String sql = "SELECT* FROM city where ID = ?";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1,id);
+			stmt.setInt(1,id);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next())
 			{
 
 				city.setCountryCode(rs.getString("CountryCode"));
 				city.setDistrict(rs.getString("District"));
-				city.setId(rs.getString("ID"));
+				city.setId(rs.getInt("ID"));
 				city.setNome(rs.getString("Name"));
-				city.setPopulation(rs.getString("Population"));
+				city.setPopulation(rs.getInt("Population"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

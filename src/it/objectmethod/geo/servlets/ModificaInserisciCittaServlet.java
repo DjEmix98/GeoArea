@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.objectmethod.geo.dao.CittaDao;
 import it.objectmethod.geo.dao.impl.CittaDaoImp;
+import it.objectmethod.geo.domain.Citta;
 
 @WebServlet(value = "/inserimento")
 public class ModificaInserisciCittaServlet extends HttpServlet {
 
+	private static final String ERRORE = "errore";
+	private static final String SUCCESS = "Operazione riuscita!";
 	/**
 	 * 
 	 */
@@ -21,54 +24,50 @@ public class ModificaInserisciCittaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String id = request.getParameter("id");
+		CittaDao cittaDao = new CittaDaoImp();
+		Citta citta = new Citta();
+		String idStringa = request.getParameter("id");
 		String regione = request.getParameter("regione");
 		String nome = request.getParameter("cittaNome");
 		String popolazioneStringa = request.getParameter("popolazione");
-		String codice = request.getParameter("codiceNazione");
-		String risultato = "Inserito successo!";
-		CittaDao cittaDao = new CittaDaoImp();
+		String codiceNazione = request.getParameter("codiceNazione");
+		String risultato = SUCCESS;
 		int popolazioneInt = 0;
-		if(id.compareToIgnoreCase("0")==0)//Vedi note FormInserimento + rimuovere ripetizioni codice + programmare a oggetti e usare propriamente il bean citta
-		{
-			if(!controlloDati(codice,regione,nome,popolazioneStringa))
-			{
-				risultato = "Errore";
-			}
-			else
-			{
-				try {
-					popolazioneInt = Integer.parseInt(popolazioneStringa);
-					cittaDao.inserisciCitta(nome, codice, regione, popolazioneInt);
-				}catch(NumberFormatException e) {
-					risultato = "errore";
-				}
-			}
+		int id = Integer.parseInt(idStringa);
+		try {
+			popolazioneInt = Integer.parseInt(popolazioneStringa);
+		}catch(NumberFormatException e) {
+			risultato = ERRORE;
 		}
-		else {
-			if(!controlloDati(codice,regione,nome,popolazioneStringa))
-			{
-				risultato = "Errore";
+		citta.setCountryCode(codiceNazione);
+		citta.setDistrict(regione);
+		citta.setId(id);
+		citta.setNome(nome);
+		citta.setPopulation(popolazioneInt);
+		if(!controlloDati(citta))
+		{
+			risultato = ERRORE;
+		}
+		else { //Vedi note FormInserimento + rimuovere ripetizioni codice + programmare a oggetti e usare propriamente il bean citta
+			if(id==0) {
+				cittaDao.inserisciCitta(nome, codiceNazione, regione, popolazioneInt);
 			}
 			else {
-				try {
-					popolazioneInt = Integer.parseInt(popolazioneStringa);
-					cittaDao.modificaCitta(id, regione, nome, codice, popolazioneInt);
-					risultato = "Modificato con successo!";
-				}catch(NumberFormatException e) {
-					risultato = "errore";
-				}
+				cittaDao.modificaCitta(id, regione, nome, codiceNazione, popolazioneInt);
 			}
 		}
+
 		request.setAttribute("risultato", risultato);
 		request.getRequestDispatcher("citta").forward(request, response);
 
 	}
 
-	boolean controlloDati(String codice, String regione, String nome, String popolazione)
+	boolean controlloDati(Citta citta)
 	{
 		boolean check = true;
-		if(codice.isEmpty()||regione.isEmpty()||nome.isEmpty()||popolazione.isEmpty())
+
+		if(citta.getCountryCode().isEmpty()
+				||citta.getDistrict().isEmpty()||citta.getNome().isEmpty())
 		{
 			check = false;
 		}

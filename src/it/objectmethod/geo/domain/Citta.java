@@ -3,11 +3,11 @@ package it.objectmethod.geo.domain;
 
 public class Citta {
 
-	private	String nome;
-	private String id;
+	private int population;
+	private int id;
 	private String countryCode;
 	private String district;
-	private String population;
+	private	String nome;
 
 	public String getNome() {
 		return nome;
@@ -15,14 +15,6 @@ public class Citta {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getCountryCode() {
@@ -41,11 +33,19 @@ public class Citta {
 		this.district = district;
 	}
 
-	public String getPopulation() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(String population) {
+	public void setPopulation(int population) {
 		this.population = population;
 	}
 

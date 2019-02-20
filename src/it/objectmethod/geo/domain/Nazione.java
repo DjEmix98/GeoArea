@@ -5,7 +5,7 @@ public class Nazione {
 	private String continente;
 	private String nome;
 	private String code;
-	private String population;
+	private int population;
 
 	public String getNome() {
 		return nome;
@@ -25,10 +25,11 @@ public class Nazione {
 	public void setCode(String code) {
 		this.code = code;
 	}	
-	public String getPopulation() {
+
+	public int getPopulation() {
 		return population;
 	}
-	public void setPopulation(String population) {
+	public void setPopulation(int population) {
 		this.population = population;
 	}
 

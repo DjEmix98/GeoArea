@@ -68,7 +68,7 @@ public class NazioneDaoImp implements NazioneDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Nazione nazioni = new Nazione();
-				nazioni.setPopulation(rs.getString("Population"));
+				nazioni.setPopulation(rs.getInt("Population"));
 				nazioni.setContinente(rs.getString("Continent"));
 				nazioni.setNome(rs.getString("Name"));
 				nazioni.setCode(rs.getString("Code"));
@@ -111,7 +111,7 @@ public class NazioneDaoImp implements NazioneDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Nazione nazioni = new Nazione();
-				nazioni.setPopulation(rs.getString("Population"));
+				nazioni.setPopulation(rs.getInt("Population"));
 				nazioni.setContinente(rs.getString("Continent"));
 				nazioni.setNome(rs.getString("Name"));
 				nazioni.setCode(rs.getString("Code"));
@@ -141,92 +141,6 @@ public class NazioneDaoImp implements NazioneDao {
 			}
 		}
 		return listaNazioni;
-	}
-
-	@Override
-	public List<Nazione> findNazionilessParameter(String codice) {
-		List<Nazione> listaNazioni = new ArrayList<>();
-		Connection conn = ConnectionConfig.getConnection();
-		PreparedStatement stmt = null;
-		try {
-			String sql = "SELECT * FROM country where not Code=?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, codice);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()){
-				Nazione nazioni = new Nazione();
-				nazioni.setPopulation(rs.getString("Population"));
-				nazioni.setContinente(rs.getString("Continent"));
-				nazioni.setNome(rs.getString("Name"));
-				nazioni.setCode(rs.getString("Code"));
-				listaNazioni.add(nazioni);
-			}
-
-			rs.close();
-			stmt.close();
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-
-			try{
-				if(stmt!=null) {
-					stmt.close();
-				}				
-			}catch(SQLException se2){
-				se2.printStackTrace();
-			}
-			try{
-				if(conn!=null) {
-					conn.close();
-				}	
-			}catch(SQLException se){
-				se.printStackTrace();
-			}
-		}
-		return listaNazioni;
-	}
-
-	@Override
-	public Nazione findSingleNation(String codice) {
-		Nazione nazione = new Nazione();
-		Connection conn = ConnectionConfig.getConnection();
-		PreparedStatement stmt = null;
-		try {
-			String sql = "SELECT * FROM country where Code=?";
-			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, codice);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()){
-				nazione.setPopulation(rs.getString("Population"));
-				nazione.setContinente(rs.getString("Continent"));
-				nazione.setNome(rs.getString("Name"));
-				nazione.setCode(rs.getString("Code"));;
-			}
-
-			rs.close();
-			stmt.close();
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-
-			try{
-				if(stmt!=null) {
-					stmt.close();
-				}				
-			}catch(SQLException se2){
-				se2.printStackTrace();
-			}
-			try{
-				if(conn!=null) {
-					conn.close();
-				}	
-			}catch(SQLException se){
-				se.printStackTrace();
-			}
-		}
-		return nazione;
 	}
 
 }
