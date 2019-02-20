@@ -40,10 +40,8 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 
 		listaNazioni = nazioniDao.findAllNazioni();
 		System.out.println("id: "+id);
-		if(id!=0)
-		{
 		city = cittaDao.findCittaForId(id);
-		}
+		
 		request.setAttribute("codiceNazione", nazione);
 		request.setAttribute("citta", city);
 		request.setAttribute("id", id);

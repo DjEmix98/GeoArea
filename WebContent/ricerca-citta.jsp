@@ -8,6 +8,7 @@
 <title>Ricerca Specifica</title>
 </head>
 <body>
+<a href="continenti">Torna alla home</a><br>
 	<c:forEach items="${lista}" var="citta">
 		<p>${citta.nome}" popolazione: "${citta.population}</p>
 		<br>

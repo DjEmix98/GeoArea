@@ -12,7 +12,7 @@
 		<a href="nazioni?nazioni=${continenti}">${continenti}</a>
 	</c:forEach>
 	<form>
-		<select name="nazione">
+		<select name="codiceNazione">
 			<c:forEach items="${lista}" var="nazione">
 				<option value="${nazione.code}">${nazione.nome}</option>
 			</c:forEach>
