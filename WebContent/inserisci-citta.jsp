@@ -23,11 +23,11 @@
 			Inserisci nome città:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 				type="text" name="cittaNome" value="${citta.nome}">
 		</p>
-		<c:if test="${citta.population ==0}"><p>
+		<c:if test="${citta.id==0}"><p>
 			Inserisci popolazione:&nbsp;&nbsp; <input type="text"
 				name="popolazione" value="">
 		</p></c:if>
-		<c:if test="${citta.population !=0}">
+		<c:if test="${citta.id!=0}">
 		<p>
 			Inserisci popolazione:&nbsp;&nbsp; <input type="text"
 				name="popolazione" value="${citta.population}">

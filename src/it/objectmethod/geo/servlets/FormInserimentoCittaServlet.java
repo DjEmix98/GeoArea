@@ -39,7 +39,7 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 		//TODO correggere, fare parse e fare un confronto tra integer
 
 		listaNazioni = nazioniDao.findAllNazioni();
-		System.out.println("nazione: "+nazione);
+		System.out.println("id: "+id);
 		if(id!=0)
 		{
 		city = cittaDao.findCittaForId(id);
