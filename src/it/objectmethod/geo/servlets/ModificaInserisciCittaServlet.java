@@ -29,7 +29,7 @@ public class ModificaInserisciCittaServlet extends HttpServlet {
 		String risultato = "Inserito successo!";
 		CittaDao cittaDao = new CittaDaoImp();
 		int popolazioneInt = 0;
-		if(id.compareToIgnoreCase("0")==0)
+		if(id.compareToIgnoreCase("0")==0)//Vedi note FormInserimento + rimuovere ripetizioni codice + programmare a oggetti e usare propriamente il bean citta
 		{
 			if(!controlloDati(codice,regione,nome,popolazioneStringa))
 			{

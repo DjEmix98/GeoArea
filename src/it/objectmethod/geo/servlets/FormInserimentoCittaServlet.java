@@ -35,7 +35,7 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 		NazioneDao nazioniDao = new NazioneDaoImp();
 		CittaDao cittaDao = new CittaDaoImp();
 		String id = request.getParameter("id");
-		if(id.compareToIgnoreCase("0")==0)
+		if(id.compareToIgnoreCase("0")==0) //TODO correggere, fare parse e fare un confronto tra integer
 		{
 			listaNazioni = nazioniDao.findAllNazioni();
 			nazioneSingola.setNome("Inserire nome nazione");
@@ -45,8 +45,8 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 			String nazione = request.getParameter("codiceNazione");
 			System.out.println("nazione: "+nazione);
 			city = cittaDao.findCittaForId(id);
-			listaNazioni = nazioniDao.findNazionilessParameter(nazione);
-			nazioneSingola = nazioniDao.findSingleNation(nazione);
+			listaNazioni = nazioniDao.findNazionilessParameter(nazione); //Eliminare nono
+			nazioneSingola = nazioniDao.findSingleNation(nazione); //TODO NONONONO eliminare
 		}
 		request.setAttribute("codiceNazione", nazioneSingola);
 		request.setAttribute("citta", city);
