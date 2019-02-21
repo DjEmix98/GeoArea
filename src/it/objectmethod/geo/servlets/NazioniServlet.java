@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import it.objectmethod.geo.dao.NazioneDao;
 import it.objectmethod.geo.dao.impl.NazioneDaoImp;
 import it.objectmethod.geo.domain.Nazione;
@@ -24,7 +26,13 @@ public class NazioniServlet  extends HttpServlet {
 
 		NazioneDao nazioneDao = new NazioneDaoImp();
 		String nazione = request.getParameter("nazioni");
+		HttpSession session = request.getSession();
+		if(nazione==null)
+		{
+			nazione = (String) session.getAttribute("codiceNazione");
+		}
 		List<Nazione> listaZone = nazioneDao.findNazioni(nazione);
+		session.setAttribute("codiceNazione", nazione);
 		request.setAttribute("list", listaZone);
 		request.getRequestDispatcher("nazioni.jsp").forward(request, response);
 	}
