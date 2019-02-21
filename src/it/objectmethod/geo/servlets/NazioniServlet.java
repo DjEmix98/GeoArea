@@ -23,8 +23,8 @@ public class NazioniServlet  extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		NazioneDao nazioneDao = new NazioneDaoImp();
-
-		List<Nazione> listaZone = nazioneDao.findNazioni(request.getParameter("nazioni"));
+		String nazione = request.getParameter("nazioni");
+		List<Nazione> listaZone = nazioneDao.findNazioni(nazione);
 		request.setAttribute("list", listaZone);
 		request.getRequestDispatcher("nazioni.jsp").forward(request, response);
 	}

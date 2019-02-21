@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="citta" style="color: black;">Torna indietro</a>
 <a href="continenti" style="color: black;">Torna alla home</a><p>${risultato}</p><br>
 	<form name="citta" action="inserimento">
 		<select name="codiceNazione">
@@ -36,6 +37,7 @@
 		</c:if>
 		<input type="hidden" value="${id}" name="id"> <input
 			type="submit" value="Esegui">
+			<input type="hidden" value="${codiceNascosto}" name="codiceNascosto">
 	</form>
 </body>
 </html>
