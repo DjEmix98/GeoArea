@@ -29,10 +29,10 @@ public class CittaServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if(code==null)
 		{
-			code = (String) session.getAttribute("codiceNascosto");
+			code = (String) session.getAttribute("codiceNazione");
 		}
 		List<Citta> listaCitta = cittaDao.findCittaForCode(code);
-		session.setAttribute("codiceNascosto", code);
+		session.setAttribute("codiceNazione", code);
 		request.setAttribute("list", listaCitta);
 		request.getRequestDispatcher("citta.jsp").forward(request, response);
 	}

@@ -25,15 +25,15 @@ public class NazioniServlet  extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		NazioneDao nazioneDao = new NazioneDaoImp();
-		String nazione = request.getParameter("nazioni");
+		String continente = request.getParameter("nazioni");
 		HttpSession session = request.getSession();
-		if(nazione==null)
+		if(continente==null)
 		{
-			nazione = (String) session.getAttribute("codiceNazione");
+			continente = (String) session.getAttribute("nazioni");
 		}
-		List<Nazione> listaZone = nazioneDao.findNazioni(nazione);
-		session.setAttribute("codiceNazione", nazione);
-		request.setAttribute("list", listaZone);
+		List<Nazione> listaNazioni = nazioneDao.findNazioni(continente);
+		session.setAttribute("nazioni", continente);
+		request.setAttribute("list", listaNazioni);
 		request.getRequestDispatcher("nazioni.jsp").forward(request, response);
 	}
 }

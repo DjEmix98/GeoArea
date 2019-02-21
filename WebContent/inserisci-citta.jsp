@@ -37,7 +37,6 @@
 		</c:if>
 		<input type="hidden" value="${id}" name="id"> <input
 			type="submit" value="Esegui">
-			<input type="hidden" value="${codiceNascosto}" name="codiceNascosto">
 	</form>
 </body>
 </html>

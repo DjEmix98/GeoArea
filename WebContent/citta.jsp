@@ -10,7 +10,6 @@
 
 <body>
 	<p>${risultato}</p>
-	<input type="hidden" name ="codiceNazione" value ="${codiceNazione}">
 	<a href="nazioni">Torna indietro</a>
 	<a href="inserisci?id=0">Inserisci città</a>
 	<br><a href="continenti"style="color: black;">Torna alla home</a>
