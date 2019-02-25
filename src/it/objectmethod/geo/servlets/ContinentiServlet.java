@@ -13,7 +13,7 @@ import it.objectmethod.geo.dao.NazioneDao;
 import it.objectmethod.geo.dao.impl.NazioneDaoImp;
 import it.objectmethod.geo.domain.Nazione;
 
-@WebServlet(value = "/continenti")
+@WebServlet(value = "/continents")
 public class ContinentiServlet extends HttpServlet {
 
 	/**

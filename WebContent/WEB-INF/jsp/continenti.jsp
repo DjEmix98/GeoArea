@@ -9,7 +9,7 @@
 </head>
 <body>
 	<c:forEach items="${list}" var="continenti">
-		<a href="nazioni?nazioni=${continenti}">${continenti}</a>
+		<a href="nazioni?continente=${continenti}">${continenti}</a>
 	</c:forEach>
 	<form>
 		<select name="codiceNazione">

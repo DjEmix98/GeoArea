@@ -14,7 +14,7 @@ import it.objectmethod.geo.dao.NazioneDao;
 import it.objectmethod.geo.dao.impl.NazioneDaoImp;
 import it.objectmethod.geo.domain.Nazione;
 
-@WebServlet(value = "/nazioni")
+@WebServlet(value = "/nazionic")
 public class NazioniServlet  extends HttpServlet {
 
 	/**

@@ -14,7 +14,7 @@ import it.objectmethod.geo.dao.CittaDao;
 import it.objectmethod.geo.dao.impl.CittaDaoImp;
 import it.objectmethod.geo.domain.Citta;
 
-@WebServlet(value = "/citta")
+@WebServlet(value = "/cittaz")
 public class CittaServlet extends HttpServlet{
 
 	/**
