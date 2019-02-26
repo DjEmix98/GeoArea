@@ -13,9 +13,8 @@ import it.objectmethod.geo.dao.CittaDao;
 import it.objectmethod.geo.domain.Citta;
 
 public class CittaDaoImp implements CittaDao {
-
 	@Override
-	public List<Citta> findCittaForCode(String code) {
+	public List<Citta> findCittaByCode(String code) {
 		List<Citta> listaCitta = new ArrayList<>();
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
@@ -61,7 +60,7 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public List<Citta> findCittaForFilter(String filterTextCity, String filterCode, int filterPopolazione, boolean flagOperatore) {
+	public List<Citta> findCittaByCityandFlag(Citta city, boolean flagOperatore) {
 		List<Citta> listaCitta = new ArrayList<>();
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
@@ -76,11 +75,11 @@ public class CittaDaoImp implements CittaDao {
 				sql = "SELECT * FROM city where Name LIKE ? AND (Population < ? OR ? =0) AND CountryCode = ?";
 			}
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, filterTextCity);
+			stmt.setString(1, city.getNome());
 			// stmt.setString(2, filterOperator);
-			stmt.setInt(2, filterPopolazione);
-			stmt.setInt(3, filterPopolazione);
-			stmt.setString(4, filterCode);
+			stmt.setInt(2, city.getPopulation());
+			stmt.setInt(3, city.getPopulation());
+			stmt.setString(4, city.getCountryCode());
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()){
 				Citta citta = new Citta();
@@ -177,7 +176,7 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public Citta findCittaForId(int id) {
+	public Citta findCittaById(int id) {
 		Connection conn = ConnectionConfig.getConnection();
 		Citta city = new Citta();
 		PreparedStatement stmt = null;

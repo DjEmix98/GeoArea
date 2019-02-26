@@ -21,7 +21,7 @@
 		<p>Scrivi città da ricercare:</p>
 		<input type="text" name="ricercaCity"><br>
 		<p>Scrivi numero popolazione:</p>
-		<input type="text" name="nPopolazione"> <input type="radio"
+		<input type="text" name="popolazione"> <input type="radio"
 			name="operatore" value="maggiore" checked> Maggiore <input
 			type="radio" name="operatore" value="minore"> Minore<br>
 		<input type="submit" formaction="ricerca">

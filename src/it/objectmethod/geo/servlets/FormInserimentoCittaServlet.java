@@ -18,7 +18,7 @@ import it.objectmethod.geo.domain.Citta;
 import it.objectmethod.geo.domain.Nazione;
 
 
-@WebServlet(value = "/inserisci")
+@WebServlet(value = "/inserisciz")
 public class FormInserimentoCittaServlet extends HttpServlet{
 
 	/**
@@ -40,7 +40,7 @@ public class FormInserimentoCittaServlet extends HttpServlet{
 
 		listaNazioni = nazioniDao.findAllNazioni();
 		System.out.println("id: "+id);
-		city = cittaDao.findCittaForId(id);
+		city = cittaDao.findCittaById(id);
 		
 		request.setAttribute("codiceNazione", nazione);
 		request.setAttribute("citta", city);

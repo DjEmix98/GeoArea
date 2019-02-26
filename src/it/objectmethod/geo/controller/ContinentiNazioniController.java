@@ -34,6 +34,7 @@ public class ContinentiNazioniController {
 	{
 		NazioneDao nazioneDao = new NazioneDaoImp();
 		HttpSession session = request.getSession();
+		System.out.println("Sessione: "+session);
 		if(continente==null)
 		{
 			continente = (String) session.getAttribute("continente");
