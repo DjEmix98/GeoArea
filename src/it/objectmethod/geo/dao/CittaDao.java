@@ -10,6 +10,6 @@ public interface CittaDao {
 	public List<Citta> findCittaByCityandFlag(Citta city, boolean flagOperatore);
 	public Citta findCittaById(int id);
 	public void eliminaCitta(int id);
-	public void inserisciCitta(String nome, String code, String regione, int popolazione);
-	public void modificaCitta(int id, String regione,String nome,String code, int popolazione );
+	public void inserisciCitta(Citta city);
+	public void modificaCitta(Citta city);
 }

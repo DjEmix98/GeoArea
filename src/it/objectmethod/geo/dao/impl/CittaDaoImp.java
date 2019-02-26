@@ -134,16 +134,16 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void inserisciCitta(String nome, String code, String regione, int popolazione) {
+	public void inserisciCitta(Citta city) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
 		String sql = "INSERT INTO city (Name,CountryCode,District,Population) values(?,?,?,?)";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1,nome);
-			stmt.setString(2,code);
-			stmt.setString(3,regione);
-			stmt.setLong(4,popolazione);
+			stmt.setString(1,city.getNome());
+			stmt.setString(2,city.getCountryCode());
+			stmt.setString(3,city.getDistrict());
+			stmt.setLong(4,city.getPopulation());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -154,17 +154,17 @@ public class CittaDaoImp implements CittaDao {
 	}
 
 	@Override
-	public void modificaCitta(int id, String regione,String nome,String code,int popolazione ) {
+	public void modificaCitta(Citta city) {
 		Connection conn = ConnectionConfig.getConnection();
 		PreparedStatement stmt = null;
 		String sql = "update city set Name=?,District=?,Population=?, CountryCode=? where id=? ";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1,nome);
-			stmt.setString(2,regione);
-			stmt.setInt(3, popolazione);
-			stmt.setString(4,code);
-			stmt.setInt(5,id);
+			stmt.setString(1,city.getNome());
+			stmt.setString(2,city.getDistrict());
+			stmt.setInt(3, city.getPopulation());
+			stmt.setString(4,city.getCountryCode());
+			stmt.setInt(5,city.getId());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -187,7 +187,6 @@ public class CittaDaoImp implements CittaDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next())
 			{
-
 				city.setCountryCode(rs.getString("CountryCode"));
 				city.setDistrict(rs.getString("District"));
 				city.setId(rs.getInt("ID"));
