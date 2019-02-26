@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.objectmethod.geo.checkparam.OperatorValue;
 import it.objectmethod.geo.dao.CittaDao;
 import it.objectmethod.geo.dao.impl.CittaDaoImp;
 import it.objectmethod.geo.domain.Citta;
+import it.objectmethod.geo.operatorvalue.OperatorValue;
 @Controller
 public class CittaController {
 

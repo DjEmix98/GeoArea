@@ -28,7 +28,7 @@ public class ContinentiNazioniController {
 		model.addAttribute("lista",listaNazioni);
 		return "continenti";		
 	}
-	
+
 	@RequestMapping("/nazioni")
 	public String nazioni(@PathParam("continente") String continente,ModelMap model,HttpServletRequest request)
 	{
@@ -44,6 +44,6 @@ public class ContinentiNazioniController {
 		model.addAttribute("list",listaNazioni);
 		return "nazioni";
 	}
-	
-	
+
+
 }

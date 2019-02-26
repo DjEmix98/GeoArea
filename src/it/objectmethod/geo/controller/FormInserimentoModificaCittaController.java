@@ -14,7 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.objectmethod.geo.checkparam.ControlloDati;
+import it.objectmethod.geo.controllodati.ControlloDati;
 import it.objectmethod.geo.dao.CittaDao;
 import it.objectmethod.geo.dao.NazioneDao;
 import it.objectmethod.geo.dao.impl.CittaDaoImp;

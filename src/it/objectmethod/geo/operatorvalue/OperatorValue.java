@@ -1,4 +1,4 @@
-package it.objectmethod.geo.checkparam;
+package it.objectmethod.geo.operatorvalue;
 
 public class OperatorValue {
 
